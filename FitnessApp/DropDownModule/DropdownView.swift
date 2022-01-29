@@ -16,7 +16,7 @@ struct DropdownView: View {
         model.title
     }
     
-    var model: DropdownExerciseOptions
+    @Binding var model: DropdownExerciseOptions
     
     var body: some View {
         VStack {
@@ -25,7 +25,9 @@ struct DropdownView: View {
                     .font(.system(size: 22, weight: .semibold))
                 Spacer()
             }
-            Button(action: {}, label: {
+            Button(action: {
+                self.model.isSelected = true
+            }, label: {
                 HStack {
                     Text(title)
                     Spacer()
