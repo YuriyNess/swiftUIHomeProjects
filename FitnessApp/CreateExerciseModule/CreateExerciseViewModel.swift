@@ -29,8 +29,8 @@ final class CreateExerciseViewModel: ObservableObject {
     
     func selectOptionInSelectedDropdown(optionIndex: Int) {
         guard let selectedDropDownsIndex = selectedDropDownsIndex else { return }
-        dropDownOptions[selectedDropDownsIndex].options.forEach({ _ in
-            dropDownOptions[selectedDropDownsIndex].options[optionIndex].isSelected = false
+        dropDownOptions[selectedDropDownsIndex].options.indices.forEach({ index in
+            dropDownOptions[selectedDropDownsIndex].options[index].isSelected = false
         })
         dropDownOptions[selectedDropDownsIndex].options[optionIndex].isSelected = true
         dropDownOptions[selectedDropDownsIndex].isSelected = false

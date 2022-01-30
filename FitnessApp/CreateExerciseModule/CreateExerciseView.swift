@@ -14,14 +14,9 @@ struct CreateExerciseView: View {
     @StateObject var viewModel: CreateExerciseViewModel
     
     var dropDownsList: some View {
-        ForEach(viewModel.dropDownOptions) { option in
-            DropdownView(model: Binding(get: { option }, set: { option in
-                debugPrint("Invoke SET 22222")
-            }))
+        ForEach(viewModel.dropDownOptions.indices) { index in
+            DropdownView(model: $viewModel.dropDownOptions[index])
         }
-//        ForEach(viewModel.dropDownOptions.indices, id: \.self) { index in
-//            DropdownView(model: $viewModel.dropDownOptions[index])
-//        }
     }
     
     var actionSheet: ActionSheet {
