@@ -16,6 +16,7 @@
 		8205F8542773B3B10001E6A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8205F8532773B3B10001E6A0 /* Assets.xcassets */; };
 		8205F8572773B3B10001E6A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8205F8562773B3B10001E6A0 /* Preview Assets.xcassets */; };
 		8205F8632773B9A00001E6A0 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8205F8622773B9A00001E6A0 /* LandingView.swift */; };
+		8212AE9527C1286600B25B25 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8212AE9427C1286600B25B25 /* UserService.swift */; };
 		82187AE327B963E6008F9DB6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 82187AE227B963E6008F9DB6 /* FirebaseAnalytics */; };
 		82187AE527B963E6008F9DB6 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 82187AE427B963E6008F9DB6 /* FirebaseAnalyticsSwift-Beta */; };
 		82187AE727B963E6008F9DB6 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 82187AE627B963E6008F9DB6 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -96,6 +97,7 @@
 		8205F8562773B3B10001E6A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8205F8582773B3B10001E6A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8205F8622773B9A00001E6A0 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		8212AE9427C1286600B25B25 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		822D53BF275CD06400EAA071 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		827E39102782FB3200D2E202 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		827E391F2783052700D2E202 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		8205F84E2773B3B00001E6A0 /* FitnessApp */ = {
 			isa = PBXGroup;
 			children = (
+				8212AE9327C1284C00B25B25 /* Services */,
 				82BF990C2786269B00E8A6F8 /* CreateExerciseModule */,
 				82B26B3F2792D08100AF78BF /* DropDownModule */,
 				827E392D2783053D00D2E202 /* Extensions */,
@@ -243,6 +246,14 @@
 				8205F8562773B3B10001E6A0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8212AE9327C1284C00B25B25 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8212AE9427C1286600B25B25 /* UserService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		82187AE127B963E6008F9DB6 /* Frameworks */ = {
@@ -748,6 +759,7 @@
 				8205F8632773B9A00001E6A0 /* LandingView.swift in Sources */,
 				827E39112782FB3200D2E202 /* Colors.swift in Sources */,
 				8205F8502773B3B00001E6A0 /* FitnessAppApp.swift in Sources */,
+				8212AE9527C1286600B25B25 /* UserService.swift in Sources */,
 				82BF98FD27859B7800E8A6F8 /* RemindView.swift in Sources */,
 				827E39352783059600D2E202 /* CreateExerciseView.swift in Sources */,
 				82BF98CB27830AC000E8A6F8 /* DropdownView.swift in Sources */,

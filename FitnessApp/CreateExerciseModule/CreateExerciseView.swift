@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct CreateExerciseView: View {
-    
-    @State var remindViewLinkIsActive: Bool = false
-    
+        
     @StateObject var viewModel: CreateExerciseViewModel
     
     var dropDownsList: some View {
@@ -36,20 +34,14 @@ struct CreateExerciseView: View {
             VStack {
                 dropDownsList
                 Spacer()
-                NavigationLink(
-                    destination: RemindView(),
-                    isActive: $remindViewLinkIsActive,
-                    label: {
-                        Button(action: {
-                            remindViewLinkIsActive = true
-                        }, label: {
-                            Text("Next")
-                                .font(.system(size: 24, weight: .semibold))
-                                .foregroundColor(.primary)
-                        })
-                        .padding()
-                    })
-            }
+                Button(action: {
+                    viewModel.createChallenge()
+                }, label: {
+                    Text("Create")
+                        .font(.system(size: 24, weight: .semibold))
+                        .foregroundColor(.primary)
+                })
+                .padding()            }
             .actionSheet(isPresented: Binding<Bool>(get: {
                 viewModel.hasSelectedDropDowns
             }, set: { _ in
