@@ -18,6 +18,17 @@ struct DropdownView: View {
     
     @Binding var model: DropdownExerciseOptions
     
+    var actionSheet: ActionSheet {
+        ActionSheet(title: Text("Select"),
+                    buttons:
+                        model.options.map({ option in
+                            return ActionSheet.Button.default(Text(option.formattedValue)) {
+                                self.model.selectedOption = option
+                            }
+                        })
+        )
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -37,6 +48,9 @@ struct DropdownView: View {
             })
             .buttonStyle(PrimaryButtonStyle())
         }
+        .actionSheet(isPresented: $model.isSelected, content: {
+            actionSheet
+        })
     }
 }
 

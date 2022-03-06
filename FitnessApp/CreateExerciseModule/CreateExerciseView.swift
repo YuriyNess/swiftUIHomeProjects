@@ -17,39 +17,19 @@ struct CreateExerciseView: View {
         }
     }
     
-    var actionSheet: ActionSheet {
-        ActionSheet(title: Text("Select"),
-                    buttons:
-                        viewModel.displayedOptions.indices.map({ index in
-                            let option = viewModel.displayedOptions[index]
-                            return ActionSheet.Button.default(Text(option.formattedValue)) {
-                                viewModel.selectOptionInSelectedDropdown(optionIndex: index)
-                            }
-                        })
-        )
-    }
-    
     var body: some View {
         ScrollView {
             VStack {
                 dropDownsList
                 Spacer()
                 Button(action: {
-                    viewModel.createChallenge()
+                    viewModel.addChallenge()
                 }, label: {
                     Text("Create")
                         .font(.system(size: 24, weight: .semibold))
                         .foregroundColor(.primary)
                 })
                 .padding()            }
-            .actionSheet(isPresented: Binding<Bool>(get: {
-                viewModel.hasSelectedDropDowns
-            }, set: { _ in
-                debugPrint("Invoke SET 11111")
-                return
-            }), content: {
-                actionSheet
-            })
             .padding()
             .navigationTitle("Create")
         }

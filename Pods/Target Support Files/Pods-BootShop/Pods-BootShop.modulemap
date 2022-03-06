@@ -1,0 +1,6 @@
+framework module Pods_BootShop {
+  umbrella header "Pods-BootShop-umbrella.h"
+
+  export *
+  module * { export * }
+}

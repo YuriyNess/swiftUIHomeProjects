@@ -12,17 +12,19 @@ struct DropdownExerciseOptions: Identifiable {
     
     var options: [Option]
     
+    var selectedOption: Option
+    
     var headerTitle: String {
         type.rawValue
     }
     
     var title: String {
-        options.first(where: { $0.isSelected })?.formattedValue ?? ""
+        selectedOption.formattedValue
     }
     
     var isSelected: Bool = false
     
-    private let type: DropdownExerciseOptionsType
+    let type: DropdownExerciseOptionsType
     
     init(type: DropdownExerciseOptionsType) {
         self.type = type
@@ -36,6 +38,7 @@ struct DropdownExerciseOptions: Identifiable {
         case .length:
             options = ChallengeLength.allCases.map({ $0.toOption })
         }
+        self.selectedOption = options.first!
     }
 }
 
@@ -56,7 +59,24 @@ extension DropdownExerciseOptions {
         
         var type: OptionType
         var formattedValue: String
-        var isSelected: Bool
+        
+        var number: Int? {
+            switch type {
+            case .numeric(let number):
+                return number
+            case .text(_):
+                return nil
+            }
+        }
+        
+        var text: String? {
+            switch type {
+            case .numeric(_):
+                return nil
+            case .text(let text):
+                return text
+            }
+        }
     }
     
     enum Exercises: String, CaseIterable {
@@ -65,7 +85,7 @@ extension DropdownExerciseOptions {
         case sitDowns = "Sitdowns"
         
         var toOption: Option {
-            .init(type: .text(rawValue), formattedValue: rawValue.uppercased(), isSelected: self == .pushUps)
+            .init(type: .text(rawValue), formattedValue: rawValue.uppercased())
         }
     }
     
@@ -77,7 +97,7 @@ extension DropdownExerciseOptions {
         case sixty = 60
         
         var toOption: Option {
-            .init(type: .numeric(rawValue), formattedValue: "\(rawValue)", isSelected: self == .five)
+            .init(type: .numeric(rawValue), formattedValue: "\(rawValue)")
         }
     }
     
@@ -85,7 +105,7 @@ extension DropdownExerciseOptions {
         case one = 1, two, three, four, five
         
         var toOption: Option {
-            .init(type: .numeric(rawValue), formattedValue: "+\(rawValue)", isSelected: self == .one)
+            .init(type: .numeric(rawValue), formattedValue: "+\(rawValue)")
         }
     }
     
@@ -96,7 +116,7 @@ extension DropdownExerciseOptions {
         case month = 30
         
         var toOption: Option {
-            .init(type: .numeric(rawValue), formattedValue: "\(rawValue) Days", isSelected: self == .week)
+            .init(type: .numeric(rawValue), formattedValue: "\(rawValue) Days")
         }
     }
 }
