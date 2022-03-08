@@ -9,9 +9,6 @@ import Combine
 import Foundation
 
 final class CreateExerciseViewModel: ObservableObject {
-    private let userService = UserService()
-    private let challengeService = ChallengeService()
-    private var cancellables: [AnyCancellable] = []
     
     @Published var dropDownOptions: [DropdownExerciseOptions] = [
         .init(type: .exercise),
@@ -20,11 +17,18 @@ final class CreateExerciseViewModel: ObservableObject {
         .init(type: .length),
     ]
     
-    func currentUserId() -> AnyPublisher<String, Error> {
-        userService.currentUser.flatMap { user -> AnyPublisher<String, Error> in
+    @Published var error: FitnessError?
+    @Published var isLoading = false
+    
+    private let userService = UserService()
+    private let challengeService = ChallengeService()
+    private var cancellables: [AnyCancellable] = []
+    
+    func currentUserId() -> AnyPublisher<String, FitnessError> {
+        userService.currentUser.flatMap { user -> AnyPublisher<String, FitnessError> in
             if let userId = user?.uid {
                 debugPrint("user is already sign in")
-                return Just(userId).setFailureType(to: Error.self).eraseToAnyPublisher()
+                return Just(userId).setFailureType(to: FitnessError.self).eraseToAnyPublisher()
             } else {
                 debugPrint("user signInAnonymously")
                 return self.userService
@@ -39,26 +43,28 @@ final class CreateExerciseViewModel: ObservableObject {
 //MARK: - Actions
 extension CreateExerciseViewModel {
     func addChallenge() {
+        isLoading = true
         currentUserId().flatMap { userId in
             return self.createChallenge(userId: userId)
-        }.sink { result in
+        }.sink { [weak self] result in
+            self?.isLoading = false
             switch result {
             case .finished:
                 debugPrint("createChallenge currentUserId completed")
             case .failure(let error):
-                debugPrint(error)
+                self?.error = error
             }
         } receiveValue: { _ in
             debugPrint("createChallenge success")
         }.store(in: &cancellables)
     }
     
-    private func createChallenge(userId: String) -> AnyPublisher<Void, Error> {
+    private func createChallenge(userId: String) -> AnyPublisher<Void, FitnessError> {
         guard let exercise = dropDownOptions.first(where: { $0.type == .exercise })?.selectedOption.text,
               let startAmount = dropDownOptions.first(where: { $0.type == .amount })?.selectedOption.number,
               let increase = dropDownOptions.first(where: { $0.type == .increase })?.selectedOption.number,
               let length = dropDownOptions.first(where: { $0.type == .length })?.selectedOption.number else {
-                  return Fail(error: NSError()).eraseToAnyPublisher()
+                  return Fail(error: FitnessError.default(description: "Create challenge parsing error")).eraseToAnyPublisher()
               }
         
         let challenge = Challenge(userId: userId, exercise: exercise, startEmount: startAmount, increase: increase, length: length, startDate: Date())

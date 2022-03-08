@@ -11,25 +11,25 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 final class ChallengeService {
-    enum Errors: Error {
-        case some(Error)
-        case weakSelfChallengeService
-    }
-    
     private let db = FirebaseFirestore.Firestore.firestore()
     
-    func create(_ challenge: Challenge) -> AnyPublisher<Void, Error> {
-        return Future<Void, Error> { [weak self] promise in
+    func create(_ challenge: Challenge) -> AnyPublisher<Void, FitnessError> {
+        return Future<Void, FitnessError> { [weak self] promise in
             guard let self = self else {
-                promise(.failure(NSError()))
+                promise(.failure(.default()))
                 return
             }
     
             do {
-                _ = try self.db.collection("challenges").addDocument(from: challenge)
-                promise(.success(Void()))
+                _ = try self.db.collection("challenges").addDocument(from: challenge) { error in
+                    if let error = error {
+                        promise(.failure(FitnessError.default(description: error.localizedDescription)))
+                    } else {
+                        promise(.success(Void()))
+                    }
+                }
             } catch {
-                promise(.failure(NSError()))
+                promise(.failure(.default()))
             }
         }.eraseToAnyPublisher()
     }
