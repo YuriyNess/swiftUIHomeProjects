@@ -43,26 +43,3 @@ struct TabContainerView_Previews: PreviewProvider {
         TabContainerView().previewDevice(.some("iPhone 12 Pro Max"))
     }
 }
-
-
-final class TabContainerViewModel: ObservableObject {
-    @Published var selectedTab: TabItemModel.TabItemType = .challengeList
-    
-    let tabs: [TabItemModel] = [
-        .init(imageName: "book", title: "Activity log", type: .log),
-        .init(imageName: "list.bullet", title: "Challenges", type: .challengeList),
-        .init(imageName: "gear", title: "Settings", type: .settings),
-    ]
-}
-
-struct TabItemModel: Hashable {
-    let imageName: String
-    let title: String
-    let type: TabItemType
-    
-    enum TabItemType {
-        case log
-        case challengeList
-        case settings
-    }
-}
