@@ -13,6 +13,10 @@ final class UserService {
         Just(Auth.auth().currentUser).eraseToAnyPublisher()
     }
     
+    func observeAuthChanges() -> AnyPublisher<User?, Never> {
+        Publishers.AuthPublisher().eraseToAnyPublisher()
+    }
+    
     func signInAnonymously() -> AnyPublisher<User, FitnessError> {
         return Future<User, FitnessError> { promise in
             Auth.auth().signInAnonymously { result, error in

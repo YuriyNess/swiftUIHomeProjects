@@ -20,6 +20,7 @@
 		8212FA7427D5009500F81A04 /* ChallengeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8212FA7327D5009500F81A04 /* ChallengeModel.swift */; };
 		8212FA7727D509DF00F81A04 /* ChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8212FA7627D509DF00F81A04 /* ChallengeService.swift */; };
 		8212FA7F27D7464600F81A04 /* FitnessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8212FA7E27D7464600F81A04 /* FitnessError.swift */; };
+		8212FA8227D75B3400F81A04 /* AuthPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8212FA8127D75B3400F81A04 /* AuthPublisher.swift */; };
 		822D53C0275CD06400EAA071 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D53BF275CD06400EAA071 /* Array.swift */; };
 		822D53C9275CD07300EAA071 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D53BF275CD06400EAA071 /* Array.swift */; };
 		827E39112782FB3200D2E202 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E39102782FB3200D2E202 /* Colors.swift */; };
@@ -83,6 +84,7 @@
 		8212FA7327D5009500F81A04 /* ChallengeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeModel.swift; sourceTree = "<group>"; };
 		8212FA7627D509DF00F81A04 /* ChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeService.swift; sourceTree = "<group>"; };
 		8212FA7E27D7464600F81A04 /* FitnessError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessError.swift; sourceTree = "<group>"; };
+		8212FA8127D75B3400F81A04 /* AuthPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPublisher.swift; sourceTree = "<group>"; };
 		822D53BF275CD06400EAA071 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		827E39102782FB3200D2E202 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		827E391F2783052700D2E202 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		8205F84E2773B3B00001E6A0 /* FitnessApp */ = {
 			isa = PBXGroup;
 			children = (
+				8212FA8027D75B2500F81A04 /* Publishers */,
 				8212FA7527D509C200F81A04 /* Challenge */,
 				8212AE9327C1284C00B25B25 /* Services */,
 				82BF990C2786269B00E8A6F8 /* CreateExerciseModule */,
@@ -237,6 +240,14 @@
 				8212FA7327D5009500F81A04 /* ChallengeModel.swift */,
 			);
 			path = Challenge;
+			sourceTree = "<group>";
+		};
+		8212FA8027D75B2500F81A04 /* Publishers */ = {
+			isa = PBXGroup;
+			children = (
+				8212FA8127D75B3400F81A04 /* AuthPublisher.swift */,
+			);
+			path = Publishers;
 			sourceTree = "<group>";
 		};
 		82187AE127B963E6008F9DB6 /* Frameworks */ = {
@@ -882,6 +893,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8212FA8227D75B3400F81A04 /* AuthPublisher.swift in Sources */,
 				82BF99262786275B00E8A6F8 /* CreateExerciseViewModel.swift in Sources */,
 				827E39202783052700D2E202 /* PrimaryButtonStyle.swift in Sources */,
 				82B26B412792D0B800AF78BF /* DropdownExerciseOptions.swift in Sources */,

@@ -12,10 +12,20 @@ import Firebase
 struct FitnessAppApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var appState = AppState()
     
     var body: some Scene {
         WindowGroup {
-            LandingView()
+            if appState.isLoggedIn {
+                TabView {
+                    Text("Log")
+                        .tabItem {
+                            Image(systemName: "book")
+                        }
+                }.accentColor(.primary)
+            } else {
+                LandingView()
+            }
         }
     }
 }
@@ -25,5 +35,18 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         debugPrint("configure firebase")
         FirebaseApp.configure()
         return true
+    }
+}
+
+final class AppState: ObservableObject {
+    @Published private(set) var isLoggedIn = false
+    
+    private let userService = UserService()
+    
+    init() {
+        userService
+            .observeAuthChanges()
+            .map { $0 != nil }
+            .assign(to: &$isLoggedIn)
     }
 }
