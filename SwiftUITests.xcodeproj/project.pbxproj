@@ -49,6 +49,7 @@
 		82A7CC4D2757809F0058167C /* JumpingPlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CC4C2757809F0058167C /* JumpingPlaceholderTextField.swift */; };
 		82A7CC5E275788280058167C /* JumpingPlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CC4C2757809F0058167C /* JumpingPlaceholderTextField.swift */; };
 		82A7CC62275788410058167C /* JumpingPlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CC4C2757809F0058167C /* JumpingPlaceholderTextField.swift */; };
+		82A96B0327DDF0DB004810C3 /* TabContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A96B0227DDF0DB004810C3 /* TabContainerView.swift */; };
 		82B26B412792D0B800AF78BF /* DropdownExerciseOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B26B402792D0B800AF78BF /* DropdownExerciseOptions.swift */; };
 		82B94A6127592B3E000B21C7 /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B94A6027592B3E000B21C7 /* KeyboardGuardian.swift */; };
 		82B94A6827592B5F000B21C7 /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B94A6027592B3E000B21C7 /* KeyboardGuardian.swift */; };
@@ -115,6 +116,7 @@
 		82A7CC3F2756C53E0058167C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		82A7CC412756C53E0058167C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82A7CC4C2757809F0058167C /* JumpingPlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpingPlaceholderTextField.swift; sourceTree = "<group>"; };
+		82A96B0227DDF0DB004810C3 /* TabContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContainerView.swift; sourceTree = "<group>"; };
 		82B26B402792D0B800AF78BF /* DropdownExerciseOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownExerciseOptions.swift; sourceTree = "<group>"; };
 		82B94A6027592B3E000B21C7 /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		82B94A6C27592BDB000B21C7 /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		8205F84E2773B3B00001E6A0 /* FitnessApp */ = {
 			isa = PBXGroup;
 			children = (
+				82A96B0127DDF0B9004810C3 /* TabContainer */,
 				8212FA8027D75B2500F81A04 /* Publishers */,
 				8212FA7527D509C200F81A04 /* Challenge */,
 				8212AE9327C1284C00B25B25 /* Services */,
@@ -423,6 +426,14 @@
 				82A7CC4C2757809F0058167C /* JumpingPlaceholderTextField.swift */,
 			);
 			path = TextViews;
+			sourceTree = "<group>";
+		};
+		82A96B0127DDF0B9004810C3 /* TabContainer */ = {
+			isa = PBXGroup;
+			children = (
+				82A96B0227DDF0DB004810C3 /* TabContainerView.swift */,
+			);
+			path = TabContainer;
 			sourceTree = "<group>";
 		};
 		82B26B3F2792D08100AF78BF /* DropDownModule */ = {
@@ -893,6 +904,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A96B0327DDF0DB004810C3 /* TabContainerView.swift in Sources */,
 				8212FA8227D75B3400F81A04 /* AuthPublisher.swift in Sources */,
 				82BF99262786275B00E8A6F8 /* CreateExerciseViewModel.swift in Sources */,
 				827E39202783052700D2E202 /* PrimaryButtonStyle.swift in Sources */,
